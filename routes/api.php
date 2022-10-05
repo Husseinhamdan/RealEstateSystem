@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\EstateController;
 use App\Http\Controllers\Api\OwnerController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -60,6 +61,20 @@ Route::controller(OwnerController::class)->group(function () {
         Route::get('show/{id}', 'show');
         Route::post('update/{id}', 'update');
         Route::delete('delete/{id}', 'destroy');
+
+    });
+});
+//-------------------------------------Estate Api--------------------------------------------
+Route::controller(EstateController::class)->group(function () {
+    Route::prefix('estate')->group(function () {
+        Route::get('index', 'index');
+        Route::get('type/{id}','getEstateType');
+        Route::get('owner/{id}','getEstateOwner');
+
+//        Route::post('store', 'store');
+//        Route::get('show/{id}', 'show');
+//        Route::post('update/{id}', 'update');
+//        Route::delete('delete/{id}', 'destroy');
 
     });
 });

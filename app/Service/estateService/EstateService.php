@@ -4,34 +4,30 @@
 namespace App\Service\estateService;
 
 
+use App\Models\Estate;
+use App\Models\Estate_type;
+use App\Models\Owner;
 use App\Service\CrudService;
 use Illuminate\Http\Request;
 
-class EstateService implements CrudService
+class EstateService
 {
 
     public function index()
     {
-        // TODO: Implement index() method.
+        $estates = Estate::get();
+        return $estates;
     }
 
-    public function store(Request $request)
-    {
-        // TODO: Implement store() method.
-    }
 
-    public function show($id)
+    public function getType($id)
     {
-        // TODO: Implement show() method.
+        $estate= Estate::find($id);
+        return $estate->type;
     }
-
-    public function update(Request $request, $id)
+    public function getOwner($id)
     {
-        // TODO: Implement update() method.
-    }
-
-    public function destroy($id)
-    {
-        // TODO: Implement destroy() method.
+        $estate= Estate::find($id);
+        return $estate->owner;
     }
 }
